@@ -1,198 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amphithéâtre – Entrée nord</title>
-  <style>
-    :root {
-      --bg: #f5f1ea;
-      --card: #fffdf9;
-      --text: #2f2a24;
-      --muted: #6f655a;
-      --accent: #a44d2f;
-      --accent-2: #d5b47b;
-      --line: #e2d7c7;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: linear-gradient(180deg, #f8f5ef 0%, #efe6d8 100%);
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 72px 24px 48px;
-      background: linear-gradient(135deg, rgba(164,77,47,.92), rgba(213,180,123,.88));
-      color: white;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      letter-spacing: 0.5px;
-    }
-
-    header p {
-      max-width: 850px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-    }
-
-    main {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 28px;
-      align-items: stretch;
-      margin-top: -36px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: 0 16px 40px rgba(63, 43, 24, 0.08);
-      overflow: hidden;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      min-height: 460px;
-      object-fit: cover;
-      display: block;
-      background: #ddd;
-    }
-
-    .image-caption {
-      padding: 14px 18px;
-      background: #f7f2ea;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .intro {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1.7rem;
-      margin: 0 0 14px;
-    }
-
-    .intro p { margin: 0 0 14px; }
-
-    .grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .feature {
-      padding: 24px;
-    }
-
-    .feature h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      color: var(--accent);
-    }
-
-    .section {
-      margin-top: 28px;
-      padding: 28px;
-    }
-
-    .quote {
-      border-left: 4px solid var(--accent-2);
-      padding-left: 16px;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 18px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px 20px 40px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero, .grid {
-        grid-template-columns: 1fr;
-      }
-      .hero-image {
-        min-height: 320px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Trèves 2026 avec My Maps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: darkred;
+        }
+        ul {
+            list-style-type: square;
+        }
+        a {
+            text-decoration: none;
+            color: darkblue;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Amphithéâtre – Entrée nord</h1>
-    <p>  paysage verdoyant et circulation des visiteurs.</p>
-  </header>
+    <h1>Trèves 2026 avec My Maps</h1>
 
-  <main>
-    <section class="hero">
-      <article class="card">
-        <img class="Amphitheater_Trier_und_Circus" src="C:\Users\user\Desktop\test\Amphitheater_Trier_und_Circus.jpg" alt="Illustration de l’entrée nord de l’amphithéâtre" />
-        <div class="image-caption">
-          Illustration de l’entrée nord : façade monumentale, escaliers latéraux, arcades et colline verdoyante en arrière-plan.
-        </div>
-      </article>
-
-      <article class="card intro">
-        <span class="eyebrow">Présentation</span>
-        <h2>Un accès monumental au cœur du site</h2>
-        <p>L’entrée nord de l’amphithéâtre se distingue par ses portails, ses ouvertures en série et ses murs de pierre qui structurent l’ensemble du monument. L’architecture met en valeur la montée vers les niveaux supérieurs tout en s’intégrant au paysage.</p>
-        <p>Autour de la construction, on aperçoit des citoyens, des arbres, des prairies et de vastes plaines. Le site combine ainsi présence humaine, organisation bâtie et environnement naturel.</p>
-        <p>Les murs, réalisés en calcaire, donnent une impression de solidité et de permanence. L’ensemble évoque à la fois la fonction défensive, l’accueil du public et le prestige du lieu.</p>
-      </article>
-    </section>
-
-    <section class="grid">
-      <article class="card feature">
-        <h3>Architecture</h3>
-        <p>Les portails et les rangées d’ouvertures créent une façade rythmée. Les lignes horizontales du mur et les escaliers latéraux renforcent l’effet monumental de l’entrée.</p>
-      </article>
-
-      
-
-      <article class="card feature">
-        <h3>Paysage</h3>
-        <p>Le monument s’inscrit dans un décor de collines verdoyantes, d’arbres et de prairies. Cette implantation donne au site une dimension à la fois naturelle et spectaculaire.</p>
-      </article>
-    </section>
-
-   
- 
+    <h2>Liens vers les sites :</h2>
+    <ul>
+        <li><a href="arene.html">Arène</a></li>
+        <li><a href="cathedrale.html">Cathédrale</a></li>
+        <li><a href="cirque.html">Cirque</a></li>
+        <li><a href="forum.html">Forum</a></li>
+        <li><a href="necropole.html">Nécropole</a></li>
+        <li><a href="palais.html">Palais</a></li>
+        <li><a href="pont.html">Pont</a></li>
+        <li><a href="porta_nigra.html">Porta Nigra</a></li>
+        <li><a href="temple.html">Temple</a></li>
+        <li><a href="theatre.html">Théâtre</a></li>
+        <li><a href="termes_des_palais.html">Termes des Palais</a></li>
+        <li><a href="termes.html">Termes</a></li>
+    </ul>
 </body>
 </html>
