@@ -12,28 +12,52 @@
       background: #f7f7f7;
       color: #222;
     }
+
     header {
       padding: 16px 20px;
       background: darkred;
       color: white;
     }
+
     header h1 {
       margin: 0;
       font-size: 1.6rem;
     }
+
     header p {
       margin: 6px 0 0;
     }
+
     #map {
       height: calc(100vh - 90px);
       width: 100%;
     }
+
     .leaflet-popup-content a {
       color: darkblue;
       text-decoration: none;
     }
+
     .leaflet-popup-content a:hover {
       text-decoration: underline;
+    }
+
+    .locate-btn {
+      position: absolute;
+      top: 110px;
+      right: 12px;
+      z-index: 1000;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .locate-btn:hover {
+      background: #f0f0f0;
     }
   </style>
 </head>
@@ -43,6 +67,7 @@
     <p>Clique sur un repère pour voir le site correspondant.</p>
   </header>
 
+  <button class="locate-btn" onclick="localiserUtilisateur()">Me localiser</button>
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -55,7 +80,7 @@
     }).addTo(map);
 
     const lieux = [
-      { nom: 'Vue sur le palais', coords: [49.7499, 6.6398], lien: 'palais.html' },
+      { nom: 'Vue sur le palais', coords: [49.75317, 6.6429], lien: 'palais.html' },
       { nom: "Vue du temple d'Esculape", coords: [49.7469, 6.6247], lien: 'temple_esculape.html' },
       { nom: "Vue du temple d'Herrenbrunn", coords: [49.7488, 6.6208], lien: 'temple_herrenbrunn.html' },
       { nom: 'Forum : Vue Nord Ouest', coords: [49.7482, 6.6341], lien: 'forum_nord_ouest.html' },
@@ -77,6 +102,8 @@
     ];
 
     const bounds = [];
+    let userMarker = null;
+    let userCircle = null;
 
     lieux.forEach(lieu => {
       const marker = L.marker(lieu.coords).addTo(map);
@@ -89,6 +116,63 @@
 
     if (bounds.length) {
       map.fitBounds(bounds, { padding: [30, 30] });
+    }
+
+    function localiserUtilisateur() {
+      if (!navigator.geolocation) {
+        alert("La géolocalisation n'est pas prise en charge par ce navigateur.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const precision = position.coords.accuracy;
+
+          if (userMarker) {
+            map.removeLayer(userMarker);
+          }
+
+          if (userCircle) {
+            map.removeLayer(userCircle);
+          }
+
+          userMarker = L.marker([lat, lng]).addTo(map);
+          userMarker.bindPopup(`
+            <strong>Vous êtes ici</strong><br>
+            Précision : environ ${Math.round(precision)} mètres
+          `).openPopup();
+
+          userCircle = L.circle([lat, lng], {
+            radius: precision
+          }).addTo(map);
+
+          map.setView([lat, lng], 16);
+        },
+        error => {
+          let message = "Impossible de récupérer votre position.";
+
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              message = "Vous avez refusé la géolocalisation.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              message = "La position n'est pas disponible.";
+              break;
+            case error.TIMEOUT:
+              message = "La demande de géolocalisation a expiré.";
+              break;
+          }
+
+          alert(message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
     }
   </script>
 </body>
